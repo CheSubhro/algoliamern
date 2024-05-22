@@ -1,12 +1,13 @@
 
 import dotenv from 'dotenv'
+
+dotenv.config();
+
 import connectDB from './db/index.js'
 import {app} from './app.js'
 
-
-dotenv.config({
-    path:'./.env'
-})
+// console.log('ALGOLIA_APP_ID:', process.env.ALGOLIA_APP_ID);
+// console.log('ALGOLIA_API_KEY:', process.env.ALGOLIA_API_KEY);
 
 connectDB().then (() =>{
 
