@@ -8,9 +8,15 @@ const Home = () => {
 
   useEffect(() => {
     const fetchContacts = async () => {
-      const response = await axios.get('http://localhost:8000/api/v1/contacts');
-      setContacts(response.data);
-    };
+     
+
+    const response = await axios.get('http://localhost:8000/api/v1/contacts', {
+      withCredentials: true  // Include credentials in the request
+    });
+
+    console.log(response.data.message)
+    setContacts(response.data.message);
+  }
 
     fetchContacts();
   }, []);
