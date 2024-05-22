@@ -28,5 +28,5 @@ This project is a Contact Manager application built using the MERN stack (MongoD
 1. **Clone the repository:**
 
 ```sh
-git clone https://github.com/yourusername/contact-manager.git
-cd contact-manager
+git clone [https://github.com/yourusername/contact-manager.git](https://github.com/CheSubhro/algoliamern.git)
+
