@@ -1,0 +1,9 @@
+{
+  "version": "1",
+  "name": "algoliamern",
+  "type": "collection",
+  "ignore": [
+    "node_modules",
+    ".git"
+  ]
+}
