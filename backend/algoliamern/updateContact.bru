@@ -1,0 +1,19 @@
+meta {
+  name: updateContact
+  type: http
+  seq: 4
+}
+
+put {
+  url: http://localhost:8000/api/v1/contacts/664d9c9c72ed6a6933e80576
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+      "name": "sani",
+      "email": "sani@example.com",
+      "phone": "123-456-7890"
+  }
+}

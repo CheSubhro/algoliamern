@@ -5,7 +5,19 @@ meta {
 }
 
 post {
-  url: localhost::8000/api/v1/contacts
-  body: none
+  url: http://localhost:8000/api/v1/contacts
+  body: json
   auth: none
+}
+
+headers {
+  Content-Type: application/json
+}
+
+body:json {
+  {
+      "name": "demo",
+      "email": "demo@example.com",
+      "phone": "123-456-7890"
+  }
 }

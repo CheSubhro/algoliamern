@@ -3,7 +3,7 @@ import { ApiError } from '../utils/ApiError.js';
 import HttpStatus from '../utils/HttpStatus.js';
 import { ApiResponse } from '../utils/ApiResponse.js';
 import { Contact } from '../models/contact.model.js';
-import { index } from '../utils/algoliaConfig.js'; // Import Algolia index from utility file
+import { index } from '../index.js'
 
 // Add contacts
 const addContact = asyncHandler(async (req, res, next) => {
@@ -50,4 +50,22 @@ const updateContact = asyncHandler(async (req, res, next) => {
     }
 });
 
-export { addContact,listContact,updateContact };
+// Delete contact
+const deleteContact = asyncHandler(async (req, res, next) => {
+    try {
+        const deletedContact = await Contact.findByIdAndDelete(req.params.id);
+
+        if (!deletedContact) {
+            return next(new ApiError(HttpStatus.NOT_FOUND, "Contact not found"));
+        }
+
+        // Delete contact from Algolia index
+        await index.deleteObject(req.params.id);
+
+        res.status(HttpStatus.NO_CONTENT).json(new ApiResponse(HttpStatus.NO_CONTENT, "Contact deleted successfully"));
+    } catch (error) {
+        next(new ApiError(HttpStatus.BAD_REQUEST, error.message));
+    }
+});
+
+export { addContact,listContact,updateContact,deleteContact };
